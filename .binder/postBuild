@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export GKSwstype=100
+export JULIA_NUM_PRECOMPILE_TASKS=1
+julia --project=.binder -e 'using Pkg; Pkg.instantiate(); using IJulia; IJulia.installkernel("SDDP pilot", "--project=" * dirname(Base.active_project()), env=Dict("GKSwstype"=>"100", "JULIA_NUM_THREADS"=>"1"))'
